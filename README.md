@@ -1,2 +1,2 @@
 # Projects
- Some of them are still in progress...
+ All my projects till data.
