@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">TOTAL</th>
+            </tr>
+        </thead>
+    <tbody>
+            <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for stock in stocks %}
+            <tr>
+                <td class="text-start">{{ stock["symbol"] }}</td>
+                <td class="text-end">{{ stock["shares"] }}</td>
+                <td class="text-end">{{ stock["cost_per_share"]  | usd }}</td>
+                <td class="text-end">{{ stock["purchase_price"]  | usd }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">Total Stock Worth</td>
+                <td class="border-0 text-end">{{  total_stock_worth  | usd }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">Available Balance</td>
+                <td class="border-0 text-end">{{  balance  | usd }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                <td class="border-0 w-bold text-end">{{  tally | usd }} </td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+
